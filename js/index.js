@@ -4,6 +4,7 @@ const $pause = document.querySelector('#pause');
 const $backward = document.querySelector('#backward');
 const $forward = document.querySelector('#forward');
 
+$video.volume = .1
 $play.addEventListener('click', handlePlay)
 $pause.addEventListener('click', handlePause)
 $backward.addEventListener('click', handleBackward)
@@ -37,10 +38,15 @@ function handleTimeUpdate() {
 
 function handleLoaded() {
   $progress.max = $video.duration;
-  console.log($video.duration)
 }
 
 $progress.addEventListener('input', handleInput)
 function handleInput() {
   $video.currentTime = $progress.value;
+}
+
+const $volume = document.querySelector('#volume');
+$volume.addEventListener('input', handleInputVolume)
+function handleInputVolume(){
+  $video.volume = $volume.value;
 }
